@@ -1,0 +1,22 @@
+<div [ngClass]="klasi()">
+    <div class ="course-title" [ngStyle]="{'font-style':'fantasy', 'font-weight':'bold', 'font-size':'100px','background-color':(vozac.name=='Max Verstappen') ? 'darkblue' : 'lightblue'}">
+        {{reden+'. '+vozac.name}}
+    </div>
+    <ng-template #noImg>
+        <p  >No photo</p>
+    </ng-template>
+    <img [src]="vozac.iconUrl" *ngIf="vozac.iconUrl; else noImg">
+        
+    <div class="course-description" [ngStyle]="{'color':(vozac.team === 'Mercedes') ? 'green' : (vozac.team === 'McLaren') ? 'blue' : ''}">
+        {{vozac.team}}
+    </div>
+    <div class ="course-category" [ngSwitch]="vozac.category">
+        <div class ="category" *ngSwitchCase="'BEGINNER'">Beginner</div>
+        <div class ="category" *ngSwitchCase="'ADVANCED'">Advanced</div>
+        <div class ="category" *ngSwitchCase="'INTERMEDIATE'">Intermediate</div>
+    </div>
+    <button (click)="klik()">Click</button>
+    <div  [ngStyle]="{'font-style':'italic', 'font-weight':'bold', 'font-size':'20px', 'color':'red'}">
+        Points: {{vozac.points}}
+    </div>
+</div>
